@@ -53,12 +53,12 @@ script='#!/bin/bash
 
     controlPlist="/Library/Preferences/upgrade-check-control.plist"
 
-    ## Check if the plist file exists, and if a value can be pulled from it
+    ## Check if the plist exists
     if [ -e "$controlPlist" ]; then
         storedMajorVersion=$(/usr/bin/defaults read "$controlPlist" currentVersion 2>/dev/null)
         currentMajorVersion=$(/usr/bin/sw_vers -productVersion | grep -oh "[0-9][0-9]")
 
-        ## If the value is set to true, or there was no value set...
+        ## Check if the current version is greater than the previously stored
         if [ "$currentMajorVersion" -gt "$storedMajorVersion" ]; then
              echo "Resetting authchanger." >> /tmp/upgrade-check.log
             echo "$currentMajorVersion" >> /tmp/upgrade-check.log
@@ -69,7 +69,7 @@ script='#!/bin/bash
             /usr/bin/defaults write "$controlPlist" currentVersion "$currentMajorVersion"
             exit 0
         else
-            ## If the value is set to anything other than true or not null, exit the process without touching authchanger
+            ## If the value is equal or less than, exit the process without touching authchanger
             echo "Not an upgrade, carry on." >> /tmp/upgrade-check.log
             echo "$currentMajorVersion" >> /tmp/upgrade-check.log
             echo "$storedMajorVersion" >> /tmp/upgrade-check.log
