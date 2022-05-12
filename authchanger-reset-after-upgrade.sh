@@ -24,15 +24,15 @@ if [[ -z $organization ]]; then
     organization="$4"
 fi
 
+#############################
+# NO EDITS NECESSARY BELOW THIS LINE
+#############################
+
 if [[ -z $organization ]]; then
     # If the organization is still blank, exit as that is required
     echo "Exiting, fill in the script parameter #4 in the policy running this script."
     exit 1
 fi
-
-#############################
-# NO EDITS NECESSARY BELOW THIS LINE
-#############################
 
 # 1. Needs to create a LaunchDaemon that runs at load (which will be at every startup)
 
