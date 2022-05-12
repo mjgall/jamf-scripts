@@ -10,7 +10,7 @@
 # - /Library/LaunchDaemons/"$organization".upgrade-check.plist
 # - /private/var/$organization-upgrade-check.sh
 
-# With these three files, this script will set the use the authchanger command to set the login window back to Jamf Connect after a major macOS upgrade.
+# With these three files, after a major macOS upgrade (10.15.7 --> 11, 11 --> 12, etc), authchanger will be reset to Jamf Connect
 # For reference: https://docs.jamf.com/jamf-connect/administrator-guide/Re-enabling_the_Login_Window_after_a_Major_macOS_Upgrade.html
 # This script can be ran on computers using a Jamf Pro policy, in which the script parameter #4 can be used to set the organization name (that is used in the file paths). Alternatively, the org name can also be set under VARIABLES.
 
