@@ -24,6 +24,12 @@ if [[ -z $organization ]]; then
     organization="$4"
 fi
 
+if [[ -z $organization ]]; then
+    # If the organization is still blank, exit as that is required
+    echo "Exiting, fill in the script parameter #4 in the policy running this script."
+    exit 1
+fi
+
 #############################
 # NO EDITS NECESSARY BELOW THIS LINE
 #############################
