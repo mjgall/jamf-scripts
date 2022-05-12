@@ -5,7 +5,7 @@
 # VARIABLES
 #############################
 
-## Organzation name - best practice would be a single string (with no special characters), e.g. "jamf" vs "Jamf Software, Inc." Leave these blank to instead use the Jamf Pro Script Parameter #5
+## Organzation name - best practice would be a single string (with no special characters), e.g. "jamf" vs "Jamf Software, Inc." Leave these blank to instead use the Jamf Pro Script Parameter #4
 organization=""
 if [[ -z $organization ]]; then
     organization="$4"
