@@ -20,13 +20,14 @@
 
 ## Organzation name - best practice would be a single string (with no special characters), e.g. "jamf" vs "Jamf Software, Inc." Leave these blank to instead use the Jamf Pro Script Parameter #4
 organization=""
-if [[ -z $organization ]]; then
-    organization="$4"
-fi
 
 #############################
 # NO EDITS NECESSARY BELOW THIS LINE
 #############################
+
+if [[ -z $organization ]]; then
+    organization="$4"
+fi
 
 if [[ -z $organization ]]; then
     # If the organization is still blank, exit as that is required
