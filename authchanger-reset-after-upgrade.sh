@@ -1,5 +1,5 @@
 #!/bin/bash
-# 5/12/22 2:36 PM - Mike Gallagher
+# 5/12/22 - Mike Gallagher
 
 #############################
 # DESCRIPTION
@@ -7,7 +7,7 @@
 
 # This script creates three files:
 # - /Library/Preferences/upgrade-check-control.plist
-# - /Library/LaunchDaemons/"$organization".upgrade-check.plist
+# - /Library/LaunchDaemons/$organization.upgrade-check.plist
 # - /private/var/$organization-upgrade-check.sh
 
 # With these three files, after a major macOS upgrade (10.15.7 --> 11, 11 --> 12, etc), authchanger will be reset to Jamf Connect
@@ -80,9 +80,9 @@ script='#!/bin/bash
 
         ## Check if the current version is greater than the previously stored
         if [ "$currentMajorVersion" -gt "$storedMajorVersion" ]; then
-             echo "Resetting authchanger." >> /tmp/upgrade-check.log
-            echo "$currentMajorVersion" >> /tmp/upgrade-check.log
-            echo "$storedMajorVersion" >> /tmp/upgrade-check.log
+            echo "Resetting authchanger." >> /tmp/upgrade-check.log
+            echo "Current version: $currentMajorVersion" >> /tmp/upgrade-check.log
+            echo "Previous version: $storedMajorVersion" >> /tmp/upgrade-check.log
             ## reset authchanger to Jamf Connect
             /usr/local/bin/authchanger -reset -jamfconnect
             ## update storedMajorVersion
@@ -91,8 +91,8 @@ script='#!/bin/bash
         else
             ## If the value is equal or less than, exit the process without touching authchanger
             echo "Not an upgrade, carry on." >> /tmp/upgrade-check.log
-            echo "$currentMajorVersion" >> /tmp/upgrade-check.log
-            echo "$storedMajorVersion" >> /tmp/upgrade-check.log
+            echo "Current Version: $currentMajorVersion" >> /tmp/upgrade-check.log
+            echo "Previous Version: $storedMajorVersion" >> /tmp/upgrade-check.log
             exit 0
         fi
     else
